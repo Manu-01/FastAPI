@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-# from CRUD import router as todo_router
-from test import router as test_router
 from controller.CRUD import router as todo_router
+from controller.test import router as t_router
+from controller.dependency_injection import router as di_router
 
 app = FastAPI()
 app.include_router(todo_router)
-app.include_router(test_router)
+app.include_router(t_router)
+app.include_router(di_router)
 
 
 #Normal get API
@@ -17,7 +18,7 @@ def home():
             {
                 "id":1,
                 "name":"John Doe",
-                "email":"z5AqM@example.com"
+                "email":"z5AqM@example.com"  
             },
             {
                 "id":2,
